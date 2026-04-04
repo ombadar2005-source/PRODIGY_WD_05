@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>WeatherNow – Weather App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="page">
+    <section class="weather-app">
+      <header class="weather-header">
+        <h1>WeatherNow</h1>
+        <p>Check live weather by your location or any city.</p>
+      </header>
+
+      <div class="weather-controls">
+        <form id="searchForm" class="search-form">
+          <input
+            type="text"
+            id="cityInput"
+            placeholder="Enter city (e.g. Pune, London)"
+            autocomplete="off"
+          />
+          <button type="submit" class="btn primary">Search</button>
+        </form>
+        <button id="currentLocationBtn" class="btn ghost">
+          Use my current location
+        </button>
+      </div>
+
+      <section id="weatherCard" class="weather-card hidden">
+        <div class="weather-main">
+          <div class="weather-location">
+            <h2 id="cityName">City</h2>
+            <p id="countryName">Country</p>
+          </div>
+          <div class="weather-temp">
+            <span id="temperature">--</span>
+            <span class="temp-unit">°C</span>
+          </div>
+        </div>
+
+        <div class="weather-meta">
+          <div class="weather-status">
+            <img id="weatherIcon" alt="Weather icon" />
+            <p id="weatherDescription">Description</p>
+          </div>
+          <ul class="weather-details">
+            <li>
+              <span>Feels like</span>
+              <strong id="feelsLike">-- °C</strong>
+            </li>
+            <li>
+              <span>Humidity</span>
+              <strong id="humidity">-- %</strong>
+            </li>
+            <li>
+              <span>Wind</span>
+              <strong id="windSpeed">-- m/s</strong>
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <p id="message" class="message"></p>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
