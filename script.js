@@ -2,7 +2,7 @@ const apiKey = "2e0c495d4dbbd42cd9390c1f6253e4d3";
 
 const searchForm = document.getElementById("searchForm");
 const cityInput = document.getElementById("cityInput");
-const currentLocationBtn = document.getElementById("currentLocationBtn");
+
 
 const weatherCard = document.getElementById("weatherCard");
 const message = document.getElementById("message");
@@ -27,23 +27,7 @@ searchForm.addEventListener("submit", (e) => {
   fetchWeatherByCity(city);
 });
 
-// Fetch weather by current location
-currentLocationBtn.addEventListener("click", () => {
-  if (!navigator.geolocation) {
-    showMessage("Geolocation is not supported by your browser.");
-    return;
-  }
 
-  navigator.geolocation.getCurrentPosition(
-    (position) => {
-      const { latitude, longitude } = position.coords;
-      fetchWeatherByCoords(latitude, longitude);
-    },
-    () => {
-      showMessage("Unable to access your location.");
-    }
-  );
-});
 
 // Fetch weather using city name
 function fetchWeatherByCity(city) {
@@ -59,19 +43,8 @@ function fetchWeatherByCity(city) {
     .catch((err) => showMessage(err.message));
 }
 
-// Fetch weather using coordinates
-function fetchWeatherByCoords(lat, lon) {
-  showMessage("Loading...");
-  const url = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=metric`;
 
-  fetch(url)
-    .then((res) => {
-      if (!res.ok) throw new Error("Location not found");
-      return res.json();
-    })
-    .then((data) => updateUI(data))
-    .catch((err) => showMessage(err.message));
-}
+
 
 // Update UI with weather data
 function updateUI(data) {
